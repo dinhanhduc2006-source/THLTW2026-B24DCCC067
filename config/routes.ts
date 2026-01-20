@@ -42,6 +42,12 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	{
+		path: '/BT01_THLTW',
+		name: 'BT01_THLTW',
+		// icon: 'ShopOutlined', // Icon hình cửa hàng
+		component: './BTTH1', // Phải khớp với tên folder bạn tạo trong src/pages
+	},
 
 	// DANH MUC HE THONG
 	// {
