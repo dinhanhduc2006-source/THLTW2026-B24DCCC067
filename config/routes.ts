@@ -1,4 +1,7 @@
-﻿export default [
+﻿import component from '@/locales/en-US/component';
+import path from 'path/win32';
+
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -41,6 +44,11 @@
 		name: 'TodoList',
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
+	},
+	{
+		path: '/Bai1TH1',
+		name: 'Bài 1 TH1',
+		component: './Bai1TH1',
 	},
 
 	// DANH MUC HE THONG
