@@ -50,6 +50,11 @@ export default [
 		name: 'Bài 1 TH1',
 		component: './Bai1TH1',
 	},
+	{
+		path: '/Bai2TH2',
+		name: 'Bài 2 TH2',
+		component: './Bai2TH2',
+	},
 
 	// DANH MUC HE THONG
 	// {
