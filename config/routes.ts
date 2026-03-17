@@ -42,6 +42,11 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	{
+		path: 'thuc-hanh-03',
+		name: 'Thực hành 03',
+		component: './ThucHanh03',
+	},
 
 	// DANH MUC HE THONG
 	// {
