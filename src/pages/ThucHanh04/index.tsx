@@ -37,7 +37,6 @@ const { Content } = Layout;
 const { Title, Text } = Typography;
 const { TabPane } = Tabs;
 
-// --- INTERFACES ---
 interface ConfigField {
 	id: string;
 	label: string;
@@ -56,7 +55,6 @@ interface Diploma {
 }
 
 const DiplomaManagementSystem = () => {
-	// 1. Quản lý Cấu hình biểu mẫu (Dynamic Fields)
 	const [configFields, setConfigFields] = useState<ConfigField[]>([
 		{ id: 'dt', label: 'Dân tộc', type: 'String' },
 		{ id: 'ns', label: 'Nơi sinh', type: 'String' },
@@ -64,13 +62,11 @@ const DiplomaManagementSystem = () => {
 		{ id: 'nnh', label: 'Ngày nhập học', type: 'Date' },
 	]);
 
-	// 2. Quản lý Sổ văn bằng (Mỗi năm 1 sổ)
 	const [books] = useState([
 		{ id: 'B2025', year: 2025, nextNumber: 10 },
-		{ id: 'B2026', year: 2026, nextNumber: 1 }, // Reset về 1 khi mở sổ mới
+		{ id: 'B2026', year: 2026, nextNumber: 1 },
 	]);
 
-	// 3. Quản lý Quyết định tốt nghiệp
 	const [decisions] = useState([
 		{
 			id: 'D1',
@@ -90,7 +86,6 @@ const DiplomaManagementSystem = () => {
 		},
 	]);
 
-	// 4. Quản lý Văn bằng
 	const [diplomas, setDiplomas] = useState<Diploma[]>([
 		{
 			id: '1',
@@ -110,13 +105,9 @@ const DiplomaManagementSystem = () => {
 	const [form] = Form.useForm();
 	const [searchForm] = Form.useForm();
 
-	// --- LOGIC NGHIỆP VỤ ---
-
-	// Hàm thêm văn bằng (Tự động tăng số vào sổ theo từng Quyết định/Sổ)
 	const handleAddDiploma = (values: any) => {
 		const { staticInfo, dynamicInfo } = values;
 
-		// Logic: Lấy số vào sổ lớn nhất hiện tại của sổ tương ứng và +1
 		const relatedDecision = decisions.find((d) => d.id === staticInfo.decisionId);
 		const diplomaInSameBook = diplomas.filter((d) => {
 			const dec = decisions.find((dec) => dec.id === d.decisionId);
@@ -139,7 +130,6 @@ const DiplomaManagementSystem = () => {
 		form.resetFields();
 	};
 
-	// Hàm tra cứu (Bắt buộc ít nhất 2 tham số)
 	const handleSearch = (values: any) => {
 		const criteria = Object.values(values).filter((v) => v !== undefined && v !== '');
 
@@ -157,7 +147,6 @@ const DiplomaManagementSystem = () => {
 
 		if (result) {
 			setSearchResult(result);
-			// Ghi nhận lượt tra cứu cho quyết định (Logic giả lập)
 			const decision = decisions.find((d) => d.id === result.decisionId);
 			if (decision) decision.searchCount += 1;
 			message.success('Tìm thấy thông tin văn bằng!');
@@ -341,7 +330,6 @@ const DiplomaManagementSystem = () => {
 					</Form>
 				</Modal>
 
-				{/* MODAL TRA CỨU CÔNG KHAI */}
 				<Modal
 					title='Hệ thống tra cứu văn bằng tốt nghiệp'
 					visible={isSearchModalOpen}
