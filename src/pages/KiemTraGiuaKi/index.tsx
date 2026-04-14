@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import CourseList from './CourseList';
 import CourseForm from './CourseForm';
@@ -15,9 +16,10 @@ interface Course {
 const instructors = ['Đinh Anh Đức', 'Phan Quang Thành', 'Ngô Văn Nhận', 'Đặng Anh Tuấn', 'Ngô Hương Hà'];
 const LOCAL_STORAGE_KEY = 'kiemtragiuki_courses';
 
-const defaultCourses: Course[] = [
+type CourseInput = Omit<Course, 'id'>;
+
+const defaultCourseData: CourseInput[] = [
 	{
-		id: '1',
 		name: 'Khóa học React',
 		instructor: 'Đinh Anh Đức',
 		studentCount: 50,
@@ -25,7 +27,6 @@ const defaultCourses: Course[] = [
 		description: 'Học React cơ bản',
 	},
 	{
-		id: '2',
 		name: 'Khóa học Node.js',
 		instructor: 'Phan Quang Thành',
 		studentCount: 30,
@@ -33,7 +34,6 @@ const defaultCourses: Course[] = [
 		description: 'Backend với Node.js',
 	},
 	{
-		id: '3',
 		name: 'Khóa học Python',
 		instructor: 'Ngô Văn Nhận',
 		studentCount: 0,
@@ -41,7 +41,6 @@ const defaultCourses: Course[] = [
 		description: 'Lập trình Python',
 	},
 	{
-		id: '4',
 		name: 'Khóa học Java',
 		instructor: 'Đặng Anh Tuấn',
 		studentCount: 20,
@@ -49,7 +48,6 @@ const defaultCourses: Course[] = [
 		description: 'Lập trình Java căn bản và nâng cao',
 	},
 	{
-		id: '5',
 		name: 'Khóa học C++',
 		instructor: 'Ngô Hương Hà',
 		studentCount: 10,
@@ -88,16 +86,16 @@ const normalizeCourses = (courses: Course[]) => {
 const KiemTraGiuaKi: React.FC = () => {
 	const [courses, setCourses] = useState<Course[]>(() => {
 		if (typeof window === 'undefined') {
-			return defaultCourses;
+			return defaultCourseData.map((course, index) => ({ ...course, id: String(index + 1) }));
 		}
 		const stored = window.localStorage.getItem(LOCAL_STORAGE_KEY);
 		if (!stored) {
-			return defaultCourses;
+			return defaultCourseData.map((course, index) => ({ ...course, id: String(index + 1) }));
 		}
 		try {
 			const parsed = JSON.parse(stored) as Course[];
 			const normalized = normalizeCourses(parsed);
-			const missingDefaults = defaultCourses.filter(
+			const missingDefaults = defaultCourseData.filter(
 				(defaultCourse) => !normalized.some((course) => course.name === defaultCourse.name),
 			);
 			const merged = [...normalized];
@@ -106,7 +104,7 @@ const KiemTraGiuaKi: React.FC = () => {
 			}
 			return merged;
 		} catch {
-			return defaultCourses;
+			return defaultCourseData.map((course, index) => ({ ...course, id: String(index + 1) }));
 		}
 	});
 	const [formVisible, setFormVisible] = useState(false);
