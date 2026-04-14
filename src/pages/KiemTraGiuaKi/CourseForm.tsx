@@ -17,7 +17,7 @@ interface CourseFormProps {
 	onCancel: () => void;
 	onSubmit: (course: Omit<Course, 'id'>) => void;
 	initialValues?: Course;
-	courses: Course[]; // Để kiểm tra trùng tên
+	courses: Course[];
 	instructors: string[];
 }
 
@@ -43,8 +43,6 @@ const CourseForm: React.FC<CourseFormProps> = ({
 		try {
 			const values = await form.validateFields();
 			const courseData = { ...values, description };
-
-			// Kiểm tra tên khóa học không trùng
 			const existingCourse = courses.find((c) => c.name === courseData.name && c.id !== initialValues?.id);
 			if (existingCourse) {
 				message.error('Tên khóa học đã tồn tại!');
