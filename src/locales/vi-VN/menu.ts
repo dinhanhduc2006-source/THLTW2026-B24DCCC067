@@ -8,4 +8,5 @@ export default {
 
 	'menu.DanhMuc': 'Danh mục',
 	'menu.DanhMuc.ChucVu': 'Chức vụ',
+	'menu.ThucHanh07': 'Thực hành 07',
 };
