@@ -1,0 +1,152 @@
+import { Workout, HealthMetric, Goal, Exercise } from './types';
+
+export const initialWorkouts: Workout[] = [
+	{
+		id: '1',
+		date: '2026-04-28',
+		type: 'Cardio',
+		duration: 45,
+		calories: 350,
+		note: 'Chạy bộ sáng',
+		status: 'completed',
+	},
+	{ id: '2', date: '2026-04-27', type: 'Strength', duration: 60, calories: 280, note: 'Tập gym', status: 'completed' },
+	{
+		id: '3',
+		date: '2026-04-26',
+		type: 'Yoga',
+		duration: 30,
+		calories: 120,
+		note: 'Yoga buổi sáng',
+		status: 'completed',
+	},
+	{ id: '4', date: '2026-04-25', type: 'HIIT', duration: 25, calories: 300, note: 'Tabata', status: 'missed' },
+	{ id: '5', date: '2026-04-24', type: 'Cardio', duration: 40, calories: 320, note: 'Đạp xe', status: 'completed' },
+	{ id: '6', date: '2026-04-23', type: 'Strength', duration: 55, calories: 260, note: 'Tập ngực', status: 'completed' },
+	{ id: '7', date: '2026-04-22', type: 'Yoga', duration: 45, calories: 180, note: 'Yoga thiền', status: 'completed' },
+	{ id: '8', date: '2026-04-21', type: 'Cardio', duration: 50, calories: 400, note: 'Bơi lội', status: 'completed' },
+];
+
+export const initialHealthMetrics: HealthMetric[] = [
+	{ id: '1', date: '2026-04-28', weight: 70, height: 170, restingHeartRate: 72, sleepHours: 7.5 },
+	{ id: '2', date: '2026-04-21', weight: 71, height: 170, restingHeartRate: 74, sleepHours: 7 },
+	{ id: '3', date: '2026-04-14', weight: 72, height: 170, restingHeartRate: 75, sleepHours: 6.5 },
+	{ id: '4', date: '2026-04-07', weight: 73, height: 170, restingHeartRate: 76, sleepHours: 7 },
+	{ id: '5', date: '2026-03-31', weight: 74, height: 170, restingHeartRate: 78, sleepHours: 6 },
+];
+
+export const initialGoals: Goal[] = [
+	{
+		id: '1',
+		name: 'Giảm 5kg',
+		type: 'weight_loss',
+		targetValue: 5,
+		currentValue: 4,
+		deadline: '2026-05-30',
+		status: 'active',
+	},
+	{
+		id: '2',
+		name: 'Tập 20 buổi/tháng',
+		type: 'endurance',
+		targetValue: 20,
+		currentValue: 15,
+		deadline: '2026-04-30',
+		status: 'active',
+	},
+	{
+		id: '3',
+		name: 'Tăng cơ 2kg',
+		type: 'muscle_gain',
+		targetValue: 2,
+		currentValue: 2,
+		deadline: '2026-06-30',
+		status: 'achieved',
+	},
+];
+
+export const initialExercises: Exercise[] = [
+	{
+		id: '1',
+		name: 'Chạy bộ',
+		muscleGroup: 'Legs',
+		difficulty: 'easy',
+		description: 'Chạy bộ với tốc độ vừa phải',
+		caloriesPerHour: 400,
+		instructions:
+			'1. Khởi động 5-10 phút\n2. Chạy với tốc độ 6-8 km/h\n3. Duy trì nhịp thở đều\n4. Kết thúc bằng giãn cơ',
+	},
+	{
+		id: '2',
+		name: 'Gập bụng',
+		muscleGroup: 'Core',
+		difficulty: 'easy',
+		description: 'Bài tập core cơ bản',
+		caloriesPerHour: 250,
+		instructions:
+			'1. Nằm ngửa, hai tay đặt sau head\n2. Nâng người lên khi gập bụng\n3. Hạ xuống từ từ\n4. Lặp lại 15-20 lần',
+	},
+	{
+		id: '3',
+		name: 'Đẩy người',
+		muscleGroup: 'Chest',
+		difficulty: 'medium',
+		description: 'Bài tập ngực cơ bản',
+		caloriesPerHour: 300,
+		instructions: '1. Nằm ngửa, hai tay chống ngang vai\n2. Đẩy người lên cao\n3. Hạ xuống từ từ\n4. Lặp lại 10-15 lần',
+	},
+	{
+		id: '4',
+		name: 'Kéo xà đơn',
+		muscleGroup: 'Back',
+		difficulty: 'hard',
+		description: 'Bài tập lưng trên',
+		caloriesPerHour: 350,
+		instructions: '1. Nắm thanh xà, hai tay rộng vai\n2. Kéo người lên cao\n3. Hạ xuống từ từ\n4. Lặp lại 8-12 lần',
+	},
+	{
+		id: '5',
+		name: 'Ngồi xổm',
+		muscleGroup: 'Legs',
+		difficulty: 'medium',
+		description: 'Bài tập chân cơ bản',
+		caloriesPerHour: 280,
+		instructions: '1. Đứng thẳng, hai chân rộng vai\n2. Ngồi xổm xuống\n3. Đứng lên\n4. Lặp lại 15-20 lần',
+	},
+	{
+		id: '6',
+		name: 'Plank',
+		muscleGroup: 'Core',
+		difficulty: 'medium',
+		description: 'Bài tập core trung tâm',
+		caloriesPerHour: 200,
+		instructions: '1. Tư thế chống đẩy\n2. Giữ body thẳng\n3. Giữ 30-60 giây\n4. Nghỉ và lặp lại',
+	},
+	{
+		id: '7',
+		name: 'Nâng tạ đôi',
+		muscleGroup: 'Arms',
+		difficulty: 'easy',
+		description: 'Bài tập vai và tay',
+		caloriesPerHour: 180,
+		instructions: '1. Cầm tạ đôi, hai tay buông thả\n2. Nâng tạ lên cao\n3. Hạ xuống từ từ\n4. Lặp lại 12-15 lần',
+	},
+	{
+		id: '8',
+		name: 'Burpee',
+		muscleGroup: 'Full Body',
+		difficulty: 'hard',
+		description: 'Bài tập toàn thân cường độ cao',
+		caloriesPerHour: 500,
+		instructions: '1. Ngồi xổm, hai tay chống đất\n2. Nhảy chân ra sau\n3. Đẩy người lên\n4. Nhảy lên cao\n5. Lặp lại',
+	},
+	{
+		id: '9',
+		name: 'Yoga cơ bản',
+		muscleGroup: 'Full Body',
+		difficulty: 'easy',
+		description: 'Các động tác yoga cơ bản',
+		caloriesPerHour: 150,
+		instructions: '1. Thiền định 5 phút\n2. Các động tác giãn cơ\n3. Hít thở sâu\n4. Thư giãn',
+	},
+];
